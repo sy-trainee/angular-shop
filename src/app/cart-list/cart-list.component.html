@@ -1,0 +1,8 @@
+<p>Cart</p>
+
+<div *ngIf="cartItems.length > 0; else elseBlock">
+    <ul>
+        <li *ngFor="let cartItem of cartItems">{{ cartItem.name }} ${{ cartItem.count }}</li>
+    </ul>
+</div>
+<ng-template #elseBlock>Empty</ng-template>
