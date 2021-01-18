@@ -4,7 +4,7 @@ export enum Category {
   Books,
   Drinks,
   Other
-} 
+}
 
 @Component({
   selector: 'app-first',
@@ -18,8 +18,8 @@ export class FirstComponent implements OnInit {
   price: number;
   category: Category;
   isAvailable: boolean;
-  barCode = [14, 12, 23]; 
-  
+  barCode = [14, 12, 23];
+
   constructor() { }
 
   ngOnInit(): void {

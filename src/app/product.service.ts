@@ -12,16 +12,16 @@ export class ProductModel {
 export class ProductService {
 
   constructor() { }
-  
-  public mySentences:Array<ProductModel> = [
+
+  public myProducts: Array<ProductModel> = [
     {name: 'Watch', price: 99.90},
     {name: 'Mag', price: 9.10},
     {name: 'Bag', price: 12.50},
     {name: 'Note', price: 2.50}
   ];
 
-  getProducts() {  
-    return this.mySentences;
+  getProducts(): Array<ProductModel> {
+    return this.myProducts;
   }
-  
+
 }
