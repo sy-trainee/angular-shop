@@ -2,7 +2,9 @@
 
 <div *ngIf="cartItems.length > 0; else elseBlock">
     <ul>
-        <li *ngFor="let cartItem of cartItems">{{ cartItem.name }} ${{ cartItem.count }}</li>
+        <li *ngFor="let cartItem of cartItems; trackBy: trackByName">{{ cartItem.name }} ({{ cartItem.count }})</li>
     </ul>
 </div>
 <ng-template #elseBlock>Empty</ng-template>
+
+<p><button (click)="onBuyRandom()">Buy random</button></p>

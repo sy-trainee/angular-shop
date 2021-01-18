@@ -11,11 +11,24 @@ import { CartItemModel } from '../cart.service';
 export class CartListComponent implements OnInit {
 
   cartItems : Array<CartItemModel>;
+  uniqSomething : number;
 
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.cartItems = Math.random() < 0.5 ? this.cartService.getCart() : this.cartService.getEmptyCart()
+    this.uniqSomething = 0;
   }
 
+  trackByFn(index, cartItem: CartItemModel) {
+    return cartItem.name;
+  }
+
+  onBuyRandom(): void {
+    let newItem = new CartItemModel();
+    this.uniqSomething = this.uniqSomething + 1;
+    newItem.name = "Something " + this.uniqSomething; 
+    newItem.count = 1; 
+    this.cartItems.push(newItem);
+  }
 }
