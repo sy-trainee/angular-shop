@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+
 
 export class ProductModel {
   name: string;
   price: number;
 }
 
+// Нельзя отрывать декоратор класса от самого класса
+@Injectable({
+  providedIn: 'root'
+})
 export class ProductService {
 
   constructor() { }
