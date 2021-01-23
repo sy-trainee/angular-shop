@@ -20,7 +20,10 @@ import { CartService } from './cart.service';
   imports: [
     BrowserModule
   ],
-  providers: [ProductService, CartService],
+  // Это делать уже не нужно. Будем разбирать чуть позже.
+  // providers: [ProductService, CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+// Сервисы лучше перенесты в отдельную папку из корня проекта.
+// Я предлагал core/services, но вы можете выбрать любое другое удобное место.

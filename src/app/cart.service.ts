@@ -9,9 +9,9 @@ export class CartItemModel {
   providedIn: 'root'
 })
 export class CartService {
-  
+
   constructor() { }
- 
+
   public myCartItems: Array<CartItemModel> = [
     {name: 'Watch', count: 1},
   ];
@@ -25,3 +25,4 @@ export class CartService {
   }
 
 }
+// линтер
