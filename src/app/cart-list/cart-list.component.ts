@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CartService } from '../cart.service';
-import { CartItemModel } from '../cart.service';
+import { CartService } from '../core/services/cart.service';
+import { CartItemModel } from '../core/services/cart.service';
 
 @Component({
   selector: 'app-cart-list',
@@ -20,8 +20,6 @@ export class CartListComponent implements OnInit {
     this.uniqSomething = 0;
   }
 
-  // некоректное название метода
-  // в шаблоне он называется по другому
   trackByName(index, cartItem: CartItemModel): string {
     return cartItem.name;
   }
