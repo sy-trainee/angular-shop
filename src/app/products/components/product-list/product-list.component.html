@@ -1,4 +1,1 @@
-
-<ul>
-    <li *ngFor="let productItem of getProducts()">{{ productItem.name }} ${{ productItem.price }}</li>
-</ul> 
+<app-product *ngFor="let productItem of getProducts()" [product] = productItem></app-product>
