@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { CartService } from '../core/services/cart.service';
-import { CartItemModel } from '../core/services/cart.service';
+import { CartService } from '../../../core/services/cart.service';
+import { CartItemModel } from '../../../core/services/cart.service';
 
 @Component({
   selector: 'app-cart-list',
@@ -32,4 +32,3 @@ export class CartListComponent implements OnInit {
     this.cartItems.push(newItem);
   }
 }
-// линтер
