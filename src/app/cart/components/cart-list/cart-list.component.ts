@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { CartService } from '../../../core/services/cart.service';
 import { CartItemModel } from '../../../core/services/cart.service';
@@ -10,25 +11,37 @@ import { CartItemModel } from '../../../core/services/cart.service';
 })
 export class CartListComponent implements OnInit {
 
-  cartItems: Array<CartItemModel>;
-  uniqSomething: number;
+  private cartItems: Array<CartItemModel>;
 
-  constructor(private cartService: CartService) { }
+  private price: number;
+  private itemsCount: number;
+
+  private subscription: Subscription;
+
+  constructor(private cartService: CartService) {
+  }
 
   ngOnInit(): void {
-    this.cartItems = Math.random() < 0.5 ? this.cartService.getCart() : this.cartService.getEmptyCart();
-    this.uniqSomething = 0;
+    this.cartItems = this.cartService.getCart();
+    this.subscription = this.cartService.getCardUpdatedEmitter()
+      .subscribe((items: Array<CartItemModel>) => this.updateItems(items));
   }
 
-  trackByName(index, cartItem: CartItemModel): string {
-    return cartItem.name;
+  updateItems(items: Array<CartItemModel>): void {
+    this.cartItems = items;
+    this.price = this.cartService.getTotalPrice();
+    this.itemsCount = this.cartService.getTotalCount();
   }
 
-  onBuyRandom(): void {
-    const newItem = new CartItemModel();
-    this.uniqSomething = this.uniqSomething + 1;
-    newItem.name = 'Something ' + this.uniqSomething;
-    newItem.count = 1;
-    this.cartItems.push(newItem);
+  trackById(index: any, cartItem: CartItemModel): string {
+    return cartItem.id;
+  }
+
+  clearCart(): void {
+    this.cartService.clearCart();
+  }
+
+  nonEmpty(): boolean {
+    return this.cartItems.length > 0;
   }
 }

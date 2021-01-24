@@ -1,5 +1,4 @@
-<div>name: {{ product.name }}</div>
-<div>description: {{ product.description }}</div>
-<div>price: {{ product.price }}</div>
-<div>state: {{ product.isAvailable ? 'Available' : 'Not Available' }}</div>
-<button (click)="onBuy()">Buy</button>
+<div>
+    {{ product.name }} - ${{ product.price }}
+    <button *ngIf="product.isAvailable" (click)="onBuy()">Buy</button>
+</div>

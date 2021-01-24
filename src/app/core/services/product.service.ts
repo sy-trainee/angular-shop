@@ -28,7 +28,7 @@ export class ProductService {
   public myProducts: Array<ProductModel> = [
     {id: '1', name: 'Watch', description: '', category: ProductCategory.Other, price: 99.90, isAvailable: true},
     {id: '2', name: 'Mag', description: '', category: ProductCategory.Other, price: 9.10, isAvailable: true},
-    {id: '3', name: 'Bag', description: '', category: ProductCategory.Other, price: 12.50, isAvailable: true},
+    {id: '3', name: 'Bag', description: '', category: ProductCategory.Other, price: 12.50, isAvailable: false},
     {id: '4', name: 'Note', description: '', category: ProductCategory.Other, price: 2.50, isAvailable: true},
     {id: '5', name: 'Pencil', description: '', category: ProductCategory.Other, price: 0.15, isAvailable: true},
   ];
