@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { CartService } from '../../../core/services/cart.service';
@@ -9,7 +9,7 @@ import { CartItemModel } from '../../../core/services/cart.service';
   templateUrl: './cart-list.component.html',
   styleUrls: ['./cart-list.component.css']
 })
-export class CartListComponent implements OnInit {
+export class CartListComponent implements OnInit, OnDestroy {
 
   private cartItems: Array<CartItemModel>;
 
@@ -24,10 +24,14 @@ export class CartListComponent implements OnInit {
   ngOnInit(): void {
     this.cartItems = this.cartService.getCart();
     this.subscription = this.cartService.getCardUpdatedEmitter()
-      .subscribe((items: Array<CartItemModel>) => this.updateItems(items));
+      .subscribe((items: Array<CartItemModel>) => this.update(items));
   }
 
-  updateItems(items: Array<CartItemModel>): void {
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  update(items: Array<CartItemModel>): void {
     this.cartItems = items;
     this.price = this.cartService.getTotalPrice();
     this.itemsCount = this.cartService.getTotalCount();
@@ -37,7 +41,7 @@ export class CartListComponent implements OnInit {
     return cartItem.id;
   }
 
-  clearCart(): void {
+  clear(): void {
     this.cartService.clearCart();
   }
 

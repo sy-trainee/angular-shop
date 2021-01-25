@@ -45,6 +45,21 @@ export class CartService {
     this.countTotalsAndEmit();
   }
 
+  decreaseProduct(product: CartItemModel): void {
+    if (this.myCartItems.has(product.id)) {
+      const existingProduct = this.myCartItems.get(product.id);
+      if (existingProduct.count > 1) {
+        existingProduct.count--;
+        this.countTotalsAndEmit();
+      }
+    }
+  }
+
+  removeProduct(product: CartItemModel): void {
+    this.myCartItems.delete(product.id);
+    this.countTotalsAndEmit();
+  }
+
   getCardUpdatedEmitter(): EventEmitter<Array<CartItemModel>> {
     return this.cardUpdated;
   }

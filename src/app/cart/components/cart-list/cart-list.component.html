@@ -1,8 +1,10 @@
 <div *ngIf="nonEmpty(); else elseBlock">
     <p>Cart (${{ price }} per {{ itemsCount }} items)</p>
-    <ul>
-        <li *ngFor="let cartItem of cartItems; trackBy: trackById">{{ cartItem.name }} - Qty:{{ cartItem.count }} x ${{ cartItem.price }}</li>
-    </ul>
-    <button (click)="clearCart()">Clear</button>
+    <p *ngFor="let cartItem of cartItems; trackBy: trackById">
+        <app-cart-item [cartItem] = cartItem></app-cart-item>
+    </p>
+    <button (click)="clear()">Clear</button>
 </div>
-<ng-template #elseBlock><p>Cart is empty</p></ng-template>
+<ng-template #elseBlock>
+    <p>Cart is empty</p>
+</ng-template>
