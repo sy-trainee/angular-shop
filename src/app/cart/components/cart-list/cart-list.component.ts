@@ -37,6 +37,10 @@ export class CartListComponent implements OnInit, OnDestroy {
     this.itemsCount = this.cartService.getTotalCount();
   }
 
+  onRemove(cartItem: CartItemModel): void {
+    this.cartService.removeProduct(cartItem);
+  }
+
   trackById(index: any, cartItem: CartItemModel): string {
     return cartItem.id;
   }

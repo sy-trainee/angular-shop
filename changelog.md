@@ -7,3 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## 2021-01-18
 ### Added
 - initial components
+
+## 2021-01-27
+### Added
+- modules
+- services
+- directive
+- base cart functionality

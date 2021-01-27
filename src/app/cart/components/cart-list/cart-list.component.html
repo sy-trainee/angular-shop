@@ -2,8 +2,9 @@
     <p>Cart (${{ price }} per {{ itemsCount }} items)</p>
     <p *ngFor="let cartItem of cartItems; trackBy: trackById">
         <app-cart-item [cartItem] = cartItem></app-cart-item>
+        <button (click)="onRemove(cartItem)">Del</button>
     </p>
-    <button (click)="clear()">Clear</button>
+    <button [ngStyle]="{'border-radius':'12px'}" (click)="clear()">Clear</button>
 </div>
 <ng-template #elseBlock>
     <p>Cart is empty</p>

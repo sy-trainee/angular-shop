@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { CartItemModel } from '../../../core/services/cart.service';
 import { CartService } from '../../../core/services/cart.service';
@@ -20,10 +20,6 @@ export class CartItemComponent {
 
   onDecrement(): void {
     this.cartService.decreaseProduct(this.cartItem);
-  }
-
-  onRemove(): void {
-    this.cartService.removeProduct(this.cartItem);
   }
 
   onMouseWheel(event: any): void {
