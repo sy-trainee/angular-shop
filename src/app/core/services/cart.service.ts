@@ -25,6 +25,8 @@ export class CartService {
     return Array.from(this.myCartItems.values());
   }
 
+  // по моему нигде не используется и не уверен, что у Map есть свойство values
+  // выше values() используется как метод, а тут как свойство.
   isEmpty(): boolean {
     return this.myCartItems.values.length < 1;
   }

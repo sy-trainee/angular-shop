@@ -12,6 +12,8 @@ export class CartItemComponent {
 
   @Input() cartItem: CartItemModel;
 
+  // не должен этот компонент менять данные
+  // только отображать и извещать родителя о необходимімх изменениях
   constructor(private cartService: CartService) { }
 
   onIncrement(): void {
