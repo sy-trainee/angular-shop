@@ -17,11 +17,11 @@ export class CartItemComponent {
   constructor(private cartService: CartService) { }
 
   onIncrement(): void {
-    this.cartService.addProduct(this.cartItem);
+    this.cartService.increaseQuantity(this.cartItem);
   }
 
   onDecrement(): void {
-    this.cartService.decreaseProduct(this.cartItem);
+    this.cartService.decreaseQuantity(this.cartItem);
   }
 
   onMouseWheel(event: any): void {

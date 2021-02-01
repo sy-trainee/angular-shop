@@ -11,8 +11,7 @@ import { CartItemModel } from '../../../core/services/cart.service';
 })
 export class CartListComponent implements OnInit, OnDestroy {
 
-  // если эти свойства используются в шаблоне, то они должны быть public
-  private cartItems: Array<CartItemModel>;
+  public cartItems: Array<CartItemModel>;
 
   private price: number;
   private itemsCount: number;
@@ -23,7 +22,7 @@ export class CartListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.cartItems = this.cartService.getCart();
+    this.cartItems = this.cartService.getProducts();
     this.subscription = this.cartService.getCardUpdatedEmitter()
       .subscribe((items: Array<CartItemModel>) => this.update(items));
   }
@@ -47,7 +46,7 @@ export class CartListComponent implements OnInit, OnDestroy {
   }
 
   clear(): void {
-    this.cartService.clearCart();
+    this.cartService.removeAllProducts();
   }
 
   nonEmpty(): boolean {

@@ -12,54 +12,62 @@ export class CartItemModel {
 })
 export class CartService {
 
-  private myCartItems: Map<string, CartItemModel> = new Map();
+  private cartProducts: Map<string, CartItemModel> = new Map();
 
-  private totalCount = 0;
-  private totalPrice = 0;
+  private totalQuantity = 0;
+  private totalSum = 0;
 
   private cardUpdated: EventEmitter<Array<CartItemModel>> = new EventEmitter();
 
   constructor() { }
 
-  getCart(): Array<CartItemModel> {
-    return Array.from(this.myCartItems.values());
+  getProducts(): Array<CartItemModel> {
+    return Array.from(this.cartProducts.values());
   }
 
-  // по моему нигде не используется и не уверен, что у Map есть свойство values
-  // выше values() используется как метод, а тут как свойство.
-  isEmpty(): boolean {
-    return this.myCartItems.values.length < 1;
+  removeAllProducts(): void {
+    this.cartProducts = new Map();
+    this.updateCartDataAndEmit();
   }
 
-  clearCart(): void {
-    this.myCartItems = new Map();
-    this.countTotalsAndEmit();
+  isEmptyCart(): boolean {
+    return !(this.cartProducts.entries.length > 0);
   }
 
   addProduct(product: CartItemModel): void {
-    if (this.myCartItems.has(product.id)) {
-      const existingProduct = this.myCartItems.get(product.id);
-      existingProduct.count++;
-    } else {
+    if (!product.count) {
       product.count = 1;
-      this.myCartItems.set(product.id, product);
     }
-    this.countTotalsAndEmit();
+    if (this.cartProducts.has(product.id)) {
+      const existingProduct = this.cartProducts.get(product.id);
+      existingProduct.count = existingProduct.count + product.count;
+    } else {
+      this.cartProducts.set(product.id, product);
+    }
+    this.updateCartDataAndEmit();
   }
 
-  decreaseProduct(product: CartItemModel): void {
-    if (this.myCartItems.has(product.id)) {
-      const existingProduct = this.myCartItems.get(product.id);
+  increaseQuantity(product: CartItemModel): void {
+    if (this.cartProducts.has(product.id)) {
+      const existingProduct = this.cartProducts.get(product.id);
+      existingProduct.count++;
+      this.updateCartDataAndEmit();
+    }
+  }
+
+  decreaseQuantity(product: CartItemModel): void {
+    if (this.cartProducts.has(product.id)) {
+      const existingProduct = this.cartProducts.get(product.id);
       if (existingProduct.count > 1) {
         existingProduct.count--;
-        this.countTotalsAndEmit();
+        this.updateCartDataAndEmit();
       }
     }
   }
 
   removeProduct(product: CartItemModel): void {
-    this.myCartItems.delete(product.id);
-    this.countTotalsAndEmit();
+    this.cartProducts.delete(product.id);
+    this.updateCartDataAndEmit();
   }
 
   getCardUpdatedEmitter(): EventEmitter<Array<CartItemModel>> {
@@ -67,27 +75,27 @@ export class CartService {
   }
 
   getTotalCount(): number {
-    return this.totalCount;
+    return this.totalQuantity;
   }
 
   getTotalPrice(): number {
-    return this.totalPrice;
+    return this.totalSum;
   }
 
-  private countTotalsAndEmit(): void {
-    this.countTotals();
-    this.cardUpdated.emit(this.getCart());
+  private updateCartDataAndEmit(): void {
+    this.updateCartData();
+    this.cardUpdated.emit(this.getProducts());
   }
 
-  private countTotals(): void {
+  private updateCartData(): void {
     let totalCount = 0;
     let totalPrice = 0;
-    for (const item of this.myCartItems.values()) {
+    for (const item of this.cartProducts.values()) {
       totalPrice += item.count * item.price;
       totalCount += item.count;
     }
-    this.totalCount = totalCount;
-    this.totalPrice = +totalPrice.toFixed(2);
+    this.totalQuantity = totalCount;
+    this.totalSum = +totalPrice.toFixed(2);
   }
 
 }
