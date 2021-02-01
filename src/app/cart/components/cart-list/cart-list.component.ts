@@ -11,6 +11,7 @@ import { CartItemModel } from '../../../core/services/cart.service';
 })
 export class CartListComponent implements OnInit, OnDestroy {
 
+  // если эти свойства используются в шаблоне, то они должны быть public
   private cartItems: Array<CartItemModel>;
 
   private price: number;
