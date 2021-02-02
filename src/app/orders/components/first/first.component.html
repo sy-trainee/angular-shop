@@ -1,0 +1,9 @@
+<p>category: {{ category }}</p>
+<p>name: {{ name }}</p>
+<p>description: {{ description }}</p>
+<p>price: {{ price }}</p>
+<p>state: {{ isAvailable ? 'Available' : 'Not Available' }}</p>
+<p>Bar code</p>
+<ul>
+    <li *ngFor="let barCodeItem of barCode">{{ barCodeItem }}</li>
+</ul> 
