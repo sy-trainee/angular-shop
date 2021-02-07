@@ -14,3 +14,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - services
 - directive
 - base cart functionality
+
+## 2021-02-07
+### Added
+- Crrency pipe was used everywhere
+

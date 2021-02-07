@@ -1,5 +1,5 @@
 <span appHighlight="#b6dbd7" (wheel)="onMouseWheel($event)">
-    {{ cartItem.name }} - Qty:{{ cartItem.count }} x ${{ cartItem.price }}
+    {{ cartItem.name }} - Qty:{{ cartItem.count }} x {{ cartItem.price | currency }}
 </span>
 <button (click)="onDecrement()">-</button>
 <button (click)="onIncrement()">+</button>
