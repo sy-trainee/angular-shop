@@ -33,7 +33,7 @@ export class ProductService {
     {id: '5', name: 'Pencil', description: '', category: ProductCategory.Other, price: 0.15, isAvailable: true},
   ];
 
-  getProducts(): Array<ProductModel> {
+  async getProducts(): Promise<Array<ProductModel>> {
     return this.myProducts;
   }
 

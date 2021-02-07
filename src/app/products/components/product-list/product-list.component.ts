@@ -12,7 +12,7 @@ import { CartItemModel } from '../../../core/services/cart.service';
 })
 export class ProductListComponent implements OnInit {
 
-  productListItems: Array<ProductModel>;
+  productListItems: Promise<Array<ProductModel>>;
 
   constructor(private productService: ProductService, private cartService: CartService) { }
 
@@ -20,7 +20,7 @@ export class ProductListComponent implements OnInit {
     this.productListItems = this.productService.getProducts();
   }
 
-  getProducts(): Array<ProductModel> {
+  getProducts(): Promise<Array<ProductModel>> {
     return this.productListItems;
   }
 
