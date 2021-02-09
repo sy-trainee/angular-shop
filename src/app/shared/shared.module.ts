@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { HighlightDirective } from './directives/highlight.directive';
 import { BorderDirective } from './directives/border.directive';
@@ -13,16 +14,16 @@ import { STORAGE } from './../core/services/local-storage.service';
 
 import { OrderByPipe } from './pipes/order-by.pipe';
 
-
 @NgModule({
   declarations: [ HighlightDirective, BorderDirective, OrderByPipe ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   providers: [
     { provide: STORAGE, useClass: LocalStorageService },
     { provide: GeneratedString, useFactory: GeneratorFactory(36), deps: [GeneratorService] }
   ],
-  exports: [ HighlightDirective, BorderDirective, OrderByPipe ]
+  exports: [ CommonModule, FormsModule, HighlightDirective, BorderDirective, OrderByPipe ]
 })
 export class SharedModule { }

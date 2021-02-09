@@ -1,6 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 
@@ -15,7 +13,6 @@ import { SharedModule } from './../shared/shared.module';
     CartItemComponent
   ],
   imports: [
-    CommonModule,
     SharedModule,
     MatCheckboxModule,
     MatSelectModule
