@@ -13,6 +13,10 @@ export class CartListComponent implements OnInit, OnDestroy {
 
   public cartItems: Array<CartItemModel>;
 
+  public cases = ['price', 'count', 'name'];
+  public order = 'price';
+  isAsc = false;
+
   private price: number;
   private itemsCount: number;
 

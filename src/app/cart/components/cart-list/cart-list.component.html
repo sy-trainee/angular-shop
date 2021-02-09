@@ -1,11 +1,24 @@
 <div *ngIf="nonEmpty(); else elseBlock">
+
     <p>Cart ({{ price | currency }} per {{ itemsCount }} items)</p>
-    <p *ngFor="let cartItem of cartItems; trackBy: trackById">
-        <app-cart-item [cartItem] = cartItem></app-cart-item>
+
+    <mat-form-field>
+        <mat-label>Sort</mat-label>
+        <mat-select [(value)]="order">
+            <mat-option *ngFor="let key of cases" [value]="key">{{ key }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    Asc<input type="checkbox" [checked]="isAsc" (change)="isAsc=!isAsc"/>
+
+    <p *ngFor="let cartItem of cartItems | orderBy:order:isAsc ; trackBy: trackById">
+        <app-cart-item [cartItem]=cartItem></app-cart-item>
         <button (click)="onRemove(cartItem)">Del</button>
     </p>
+
     <button [ngStyle]="{'border-radius':'12px'}" (click)="clear()">Clear</button>
+
 </div>
+
 <ng-template #elseBlock>
     <p appBorder="4px">Cart is empty</p>
 </ng-template>

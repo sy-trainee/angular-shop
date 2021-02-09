@@ -11,9 +11,11 @@ import { GeneratorFactory } from './../core/services/generator.factory';
 import { LocalStorageService } from './../core/services/local-storage.service';
 import { STORAGE } from './../core/services/local-storage.service';
 
+import { OrderByPipe } from './pipes/order-by.pipe';
+
 
 @NgModule({
-  declarations: [ HighlightDirective, BorderDirective ],
+  declarations: [ HighlightDirective, BorderDirective, OrderByPipe ],
   imports: [
     CommonModule
   ],
@@ -21,6 +23,6 @@ import { STORAGE } from './../core/services/local-storage.service';
     { provide: STORAGE, useClass: LocalStorageService },
     { provide: GeneratedString, useFactory: GeneratorFactory(36), deps: [GeneratorService] }
   ],
-  exports: [ HighlightDirective, BorderDirective ]
+  exports: [ HighlightDirective, BorderDirective, OrderByPipe ]
 })
 export class SharedModule { }
