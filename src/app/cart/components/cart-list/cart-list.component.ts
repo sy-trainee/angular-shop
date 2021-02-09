@@ -13,8 +13,9 @@ export class CartListComponent implements OnInit, OnDestroy {
 
   public cartItems: Array<CartItemModel>;
 
-  private price: number;
-  private itemsCount: number;
+  // то, что используется в шаблоне, должно быть публичным
+  public price: number;
+  public itemsCount: number;
 
   private subscription: Subscription;
 

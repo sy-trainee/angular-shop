@@ -19,10 +19,11 @@ export class ConfigOptionsService {
     return this.configModel.id;
   }
 
-  setConfig(configModel: ConfigModel): void {
-    this.configModel.id = configModel.id;
-    this.configModel.email = configModel.email;
-    this.configModel.login = configModel.login;
+  setConfig(configModel: Partial<ConfigModel>): void {
+    // this.configModel.id = configModel.id;
+    // this.configModel.email = configModel.email;
+    // this.configModel.login = configModel.login;
+    this.configModel = {...this.configModel, ...configModel};
   }
 
   setLogin(login: string): void {
