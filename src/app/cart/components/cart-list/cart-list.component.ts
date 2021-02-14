@@ -13,7 +13,10 @@ export class CartListComponent implements OnInit, OnDestroy {
 
   public cartItems: Array<CartItemModel>;
 
-  // то, что используется в шаблоне, должно быть публичным
+  public cases = ['price', 'count', 'name'];
+  public order = 'price';
+  isAsc = false;
+
   public price: number;
   public itemsCount: number;
 
