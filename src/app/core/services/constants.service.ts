@@ -13,4 +13,5 @@ export class ConstantsService {
 
 }
 
+// по-моему, нигде не используется
 export const сonstantsInstance = new ConstantsService();

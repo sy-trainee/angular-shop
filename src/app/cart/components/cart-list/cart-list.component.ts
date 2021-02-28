@@ -18,8 +18,8 @@ export class CartListComponent implements OnInit, OnDestroy {
   public order = 'price';
   isAsc = false;
 
-  private price: number;
-  private itemsCount: number;
+  public price: number;
+  public itemsCount: number;
 
   private subscription: Subscription;
 
