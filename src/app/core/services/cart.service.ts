@@ -1,4 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
+import { LocalStorageService } from './local-storage.service';
 
 export class CartItemModel {
   id: string;
@@ -19,7 +20,12 @@ export class CartService {
 
   private cardUpdated: EventEmitter<Array<CartItemModel>> = new EventEmitter();
 
-  constructor() { }
+  constructor(private localStorage: LocalStorageService) {
+    const cartData: string = localStorage.get('cart');
+    if (cartData) {
+      this.cartProducts = new Map(JSON.parse(cartData));
+    }
+  }
 
   getProducts(): Array<CartItemModel> {
     return Array.from(this.cartProducts.values());
@@ -31,7 +37,7 @@ export class CartService {
   }
 
   isEmptyCart(): boolean {
-    return !(this.cartProducts.entries.length > 0);
+    return !(this.cartProducts.size > 0);
   }
 
   addProduct(product: CartItemModel): void {
@@ -96,6 +102,7 @@ export class CartService {
     }
     this.totalQuantity = totalCount;
     this.totalSum = +totalPrice.toFixed(2);
+    this.localStorage.set('cart', JSON.stringify(Array.from(this.cartProducts.entries())));
   }
 
 }

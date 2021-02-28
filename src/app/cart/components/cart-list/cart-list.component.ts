@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { CartService } from '../../../core/services/cart.service';
@@ -22,7 +23,8 @@ export class CartListComponent implements OnInit, OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private cartService: CartService) {
+  constructor(private router: Router,
+              private cartService: CartService) {
   }
 
   ngOnInit(): void {
@@ -55,5 +57,9 @@ export class CartListComponent implements OnInit, OnDestroy {
 
   nonEmpty(): boolean {
     return this.cartItems.length > 0;
+  }
+
+  onOrder(): void {
+    this.router.navigate(['/order']);
   }
 }

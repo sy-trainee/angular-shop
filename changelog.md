@@ -19,3 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Crrency pipe was used everywhere
 
+## 2021-02-28
+### Added
+- Routing
+

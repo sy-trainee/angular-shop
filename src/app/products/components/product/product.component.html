@@ -1,4 +1,6 @@
 <p>
+    <img src="{{ product.image }}">
     {{ product.name }} - {{ product.price | currency }}
-    <button *ngIf="product.isAvailable" (click)="onBuy()">Add</button>
+    <button *ngIf="product.isAvailable" (click)="onBuy()">Add to Cart</button>
 </p>
+<a routerLink="/products-list"><button>Back</button></a>

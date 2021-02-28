@@ -24,12 +24,4 @@ export class ProductListComponent implements OnInit {
     return this.productListItems;
   }
 
-  buyProduct(product: ProductModel): void {
-    const cartItem = new CartItemModel();
-    cartItem.id = product.id;
-    cartItem.name = product.name;
-    cartItem.price = product.price;
-    this.cartService.addProduct(cartItem);
-  }
-
 }

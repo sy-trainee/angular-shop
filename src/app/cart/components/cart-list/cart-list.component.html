@@ -8,7 +8,7 @@
             <mat-option *ngFor="let key of cases" [value]="key">{{ key }}</mat-option>
         </mat-select>
     </mat-form-field>
-    Asc<input type="checkbox" [checked]="isAsc" (change)="isAsc=!isAsc"/>
+    Asc<input type="checkbox" [checked]="isAsc" (change)="isAsc=!isAsc" />
 
     <p *ngFor="let cartItem of cartItems | orderBy:order:isAsc ; trackBy: trackById">
         <app-cart-item [cartItem]=cartItem></app-cart-item>
@@ -16,7 +16,7 @@
     </p>
 
     <button [ngStyle]="{'border-radius':'12px'}" (click)="clear()">Clear</button>
-
+    <button [ngStyle]="{'border-radius':'12px'}" (click)="onOrder()">Order</button>
 </div>
 
 <ng-template #elseBlock>

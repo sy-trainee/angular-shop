@@ -1,6 +1,8 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import { ProductModel } from '../../../core/services/product.service';
+import { CartItemModel, CartService } from 'src/app/core/services/cart.service';
+import { ProductModel, ProductService } from 'src/app/core/services/product.service';
 
 @Component({
   selector: 'app-product',
@@ -9,16 +11,23 @@ import { ProductModel } from '../../../core/services/product.service';
 })
 export class ProductComponent implements OnInit {
 
-  @Input() product: ProductModel;
-  @Output() buyEvent = new EventEmitter<ProductModel>();
+  product: ProductModel;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute,
+              private productService: ProductService,
+              private cartService: CartService) { }
 
   ngOnInit(): void {
+    const id: string = this.route.snapshot.paramMap.get('productID');
+    this.product = this.productService.getProduct(id);
   }
 
   onBuy(): void {
-    this.buyEvent.emit(this.product);
+    const cartItem = new CartItemModel();
+    cartItem.id = this.product.id;
+    cartItem.name = this.product.name;
+    cartItem.price = this.product.price;
+    this.cartService.addProduct(cartItem);
   }
 
 }
