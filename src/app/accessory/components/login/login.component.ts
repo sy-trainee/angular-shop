@@ -26,12 +26,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.setMessage();
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     console.log('[takeUntil ngOnDestroy]');
     this.unsubscribe.complete();
   }
 
-  onLogin() {
+  onLogin(): void {
     this.message = 'Trying to log in ...';
     const observer = {
       next: () => {
@@ -65,13 +65,14 @@ export class LoginComponent implements OnInit, OnDestroy {
       .subscribe(observer);
   }
 
-  onLogout() {
+  onLogout(): void {
     this.authService.logout();
     this.setMessage();
   }
 
-  private setMessage() {
+  private setMessage(): void {
     this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
   }
 
 }
+// linter

@@ -8,12 +8,13 @@ import { Router, RouterOutlet, NavigationEnd, NavigationStart } from '@angular/r
 })
 export class AppComponent {
 
-  onActivate($event: any, routerOutlet: RouterOutlet) {
+  onActivate($event: any, routerOutlet: RouterOutlet): void {
     console.log('Activated Component', $event, routerOutlet);
   }
 
-  onDeactivate($event: any, routerOutlet: RouterOutlet) {
+  onDeactivate($event: any, routerOutlet: RouterOutlet): void {
     console.log('Deactivated Component', $event, routerOutlet);
   }
 
 }
+// linter
