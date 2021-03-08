@@ -1,6 +1,5 @@
 import { Component, AfterViewInit, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { Router, RouterOutlet, NavigationEnd, NavigationStart } from '@angular/router';
-import { settings } from 'cluster';
 import { AppSettings } from './core/services/app-settings.service';
 
 @Component({
