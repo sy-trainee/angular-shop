@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
 
 export enum ProductCategory {
   Books,
@@ -25,21 +25,30 @@ export class ProductModel {
 })
 export class ProductService {
 
-  constructor() { }
+  private productsUrl = 'http://localhost:3000/products';
 
-  public myProducts: Array<ProductModel> = [
-    {id: '1', name: 'Watch', description: '', category: ProductCategory.Other, price: 99.90, isAvailable: true, image: 'data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=='},
-    {id: '2', name: 'Mag', description: '', category: ProductCategory.Other, price: 9.10, isAvailable: true, image: 'data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=='},
-    {id: '3', name: 'Bag', description: '', category: ProductCategory.Other, price: 12.50, isAvailable: false, image: 'data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=='},
-    {id: '4', name: 'Note', description: '', category: ProductCategory.Other, price: 2.50, isAvailable: true, image: 'data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=='},
-    {id: '5', name: 'Pencil', description: '', category: ProductCategory.Other, price: 0.15, isAvailable: true, image: 'data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=='},
-  ];
+  constructor(private http: HttpClient) { }
 
   async getProducts(): Promise<Array<ProductModel>> {
-    return this.myProducts;
+    return this.http
+      .get(this.productsUrl)
+      .toPromise()
+      .then(response => response as ProductModel[])
+      .catch(this.handleError);    
   }
 
-  getProduct(id: string): ProductModel {
-    return this.myProducts.find(product => product.id === id);
+  getProduct(id: string): Promise<ProductModel> {
+    const url = `${this.productsUrl}/${id}`;
+    return this.http
+      .get(url)
+      .toPromise()
+      .then(response => response as ProductModel)
+      .catch(this.handleError);
   }
+
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
+  }
+
 }

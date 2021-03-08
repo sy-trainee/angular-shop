@@ -10,6 +10,7 @@ import { OrdersRoutingModule } from './orders-routing.module';
     OrderComponent
   ],
   imports: [
+    SharedModule,
     OrdersRoutingModule
   ]
 })

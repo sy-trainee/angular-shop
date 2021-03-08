@@ -14,12 +14,12 @@ export class ProductComponent implements OnInit {
   product: ProductModel;
 
   constructor(private route: ActivatedRoute,
-              private productService: ProductService,
-              private cartService: CartService) { }
+    private productService: ProductService,
+    private cartService: CartService) { }
 
   ngOnInit(): void {
     const id: string = this.route.snapshot.paramMap.get('productID');
-    this.product = this.productService.getProduct(id);
+    this.productService.getProduct(id).then(product => this.product = product);
   }
 
   onBuy(): void {

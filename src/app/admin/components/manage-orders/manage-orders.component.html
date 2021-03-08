@@ -1,1 +1,3 @@
-<p>manage-orders works!</p>
+<ul>
+    <li *ngFor="let order of orders | async">{{ order.id }} - {{ order.items[0].name }} x {{ order.items[0].count }} ... </li>
+</ul>

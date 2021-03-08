@@ -1,1 +1,4 @@
-<p>Order not implemented yet</p>
+<ul>
+    <li *ngFor="let orderItem of getOrderItems()">{{ orderItem.name }} x {{ orderItem.count }}</li>
+</ul>
+<button (click)="onOrder()">Order</button>

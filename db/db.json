@@ -1,0 +1,57 @@
+{
+	"orders": [
+		{
+			"id": "1",
+			"items": [
+				{"id": "1", "name": "Watch", "price": 99.9, "count": 1}
+			]
+		}
+	],
+	"products": [
+		{
+			"id": "1",
+			"name": "Watch",
+			"description": "",
+			"category": "Other",
+			"price": 99.9,
+			"isAvailable": true,
+			"image": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
+		},
+		{
+			"id": "2",
+			"name": "Mag",
+			"description": "",
+			"category": "Other",
+			"price": 9.1,
+			"isAvailable": true,
+			"image": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
+		},
+		{
+			"id": "3",
+			"name": "Bag",
+			"description": "",
+			"category": "Other",
+			"price": 12.5,
+			"isAvailable": false,
+			"image": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
+		},
+		{
+			"id": "4",
+			"name": "Note",
+			"description": "",
+			"category": "Other",
+			"price": 2.5,
+			"isAvailable": true,
+			"image": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
+		},
+		{
+			"id": "5",
+			"name": "Pencil",
+			"description": "",
+			"category": "Other",
+			"price": 0.15,
+			"isAvailable": true,
+			"image": "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
+		}
+	]
+}

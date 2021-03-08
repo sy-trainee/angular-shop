@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { OrderModel, OrderService } from 'src/app/core/services/order.service';
 
 @Component({
   selector: 'app-manage-orders',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageOrdersComponent implements OnInit {
 
-  constructor() { }
+  orders: Observable<Array<OrderModel>>;
+
+  constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
+    this.orders = this.orderService.getOrders();
   }
 
 }
