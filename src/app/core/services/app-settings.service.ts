@@ -31,6 +31,8 @@ export class AppSettings {
                     this.saveToStorage(appSettings);
                 });
         }
+        // Я так понимаю, что эта строчка для первой строчки этого метода,
+        // так как loadFromAssets асинхронная операция и return не будет ждать ее окончания
         return of(appSettings);
     }
 
@@ -43,7 +45,7 @@ export class AppSettings {
         );
     }
 
-    private handleError(err: HttpErrorResponse) {
+    private handleError(err: HttpErrorResponse): Observable<string> {
         console.error('An error occurred:', err.error.message);
         return throwError('Something bad happened; please try again later.');
     }
@@ -62,7 +64,7 @@ export class AppSettings {
     private getDefault(): AppSettingsModel {
         const appSettings = new AppSettingsModel();
         appSettings.mode = 1;
-        appSettings.name = "vision";
+        appSettings.name = 'vision';
         return appSettings;
     }
 
